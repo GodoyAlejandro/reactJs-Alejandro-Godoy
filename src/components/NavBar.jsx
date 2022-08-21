@@ -9,11 +9,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import Cart from './Cart';
+import CartWidget from './CartWidget';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 
-const Header = () => {
+const NavBar = () => {
   let cartProp = 3;
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
@@ -115,11 +115,11 @@ const Header = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Cart cartProp={cartProp}/>
+            <CartWidget cartProp={cartProp}/>
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
 };
-export default Header;
+export default NavBar;

@@ -1,9 +1,12 @@
-import Header from "./components/Header";
+import ItemListContainer from "./components/ItemListContainer";
+import NavBar from "./components/NavBar";
 
 function App() {
+  const greetings = 'Hola buenas dias, buenas tardes, buenas noches';
   return (
     <>
-    <Header/>
+    <NavBar/>
+    <ItemListContainer greetings={greetings}/>
     </>
   );
 }
