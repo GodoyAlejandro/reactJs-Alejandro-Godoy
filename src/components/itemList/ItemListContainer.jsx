@@ -3,29 +3,33 @@ import ItemList from './ItemList';
 import './ItemListContainer.css';
 import promiseProds from '../../mocks/mockData';
 import { useParams } from 'react-router-dom';
+import Loading from '../Loading';
 
 const ItemListContainer = () => {
     const [products, setProducts] = useState([]);
-    const {category} = useParams();
+    const {genre} = useParams();
+    const [load, setLoad]= useState(true)
 
     useEffect(()=>{
+      setLoad(true)
       setTimeout(()=>{
         promiseProds
         .then((res)=>{
-          if(category){
-            setProducts(res.filter((item)=>item.category === category))
+          if(genre){
+            setProducts(res.filter((item)=>item.genre === genre));
+            setLoad(false)
           }else{
-            setProducts(res)
+            setProducts(res);
+            setLoad(false)
           }
         })
         .catch((err)=> console.log(err))
-      }, 500)
+      }, 1500)
           
-      },[category])
+      },[genre])
   return (
-    <div className='itemListContainer'>
-      <ItemList products={products} />
-      
+    <div className='itemListContainer'>{load ? <Loading/> : <ItemList products={products}/> }
+      {/* <ItemList products={products} /> */}
     </div>
   )
 }

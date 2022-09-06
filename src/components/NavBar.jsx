@@ -12,7 +12,9 @@ import MenuItem from '@mui/material/MenuItem';
 import CartWidget from './CartWidget';
 import { NavLink } from 'react-router-dom';
 
-const pages = [{link:'category/nuevo', name:'nuevo'},{link:'category/carajo', name:'carajo'},];
+const pages = [{link:'/genre/action', name:'action'},
+               {link:'/genre/comedy', name:'comedy'},
+               {link:'/genre/horror', name:'horror'}];
 
 const NavBar = () => {
   let cartProp = 3;
@@ -44,7 +46,7 @@ const NavBar = () => {
               textTransform: 'uppercase'
             }}
           >
-            <NavLink to='/' style={{textDecoration: 'none', color: 'white'}}>hola</NavLink>
+            <NavLink to='/' style={{textDecoration: 'none', color: 'white'}}>Logo</NavLink>
           </Typography>
           
 
@@ -99,7 +101,7 @@ const NavBar = () => {
               textDecoration: 'none',
             }}
           > 
-            <NavLink to='/' style={{textDecoration:'none', color:'white'}}>Hola</NavLink>
+            <NavLink to='/' style={{textDecoration:'none', color:'white'}}>Logo</NavLink>
           </Typography>
   
           
