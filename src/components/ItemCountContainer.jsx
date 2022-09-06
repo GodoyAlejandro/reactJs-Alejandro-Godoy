@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import ItemCountLayout from './ItemCountLayout';
+import ItemCount from './ItemCount';
 
 const ItemCountContainer = () => {
     const initialCount = 1;
@@ -15,7 +15,7 @@ const ItemCountContainer = () => {
       contador <= initialCount ? setDisabledBtnLess(true) : setContador(contador-1);
       contador >= initialCount ? setDisabledBtnAdd(false) : setDisabledBtnAdd(true);
     }
-  return <ItemCountLayout stock={stock} contador={contador} disabledBtnAdd={disabledBtnAdd} disabledBtnLess={disabledBtnLess} onClickBtnAdd={onClickBtnAdd} onClickBtnLess={onClickBtnLess}/>
+  return <ItemCount stock={stock} contador={contador} disabledBtnAdd={disabledBtnAdd} disabledBtnLess={disabledBtnLess} onClickBtnAdd={onClickBtnAdd} onClickBtnLess={onClickBtnLess}/>
 }
 
 export default ItemCountContainer

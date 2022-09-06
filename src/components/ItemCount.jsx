@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ItemCountLayout = ({contador, stock, disabledBtnAdd, disabledBtnLess, onClickBtnAdd, onClickBtnLess}) => {
+const ItemCount = ({contador, stock, disabledBtnAdd, disabledBtnLess, onClickBtnAdd, onClickBtnLess}) => {
   return (
     <div>
         <p>stock disponible: {stock}</p>
@@ -11,4 +11,4 @@ const ItemCountLayout = ({contador, stock, disabledBtnAdd, disabledBtnLess, onCl
   )
 }
 
-export default ItemCountLayout
+export default ItemCount

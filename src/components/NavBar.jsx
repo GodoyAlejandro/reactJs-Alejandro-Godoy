@@ -10,8 +10,9 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import CartWidget from './CartWidget';
+import { NavLink } from 'react-router-dom';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = [{link:'category/nuevo', name:'nuevo'},{link:'category/carajo', name:'carajo'},];
 
 const NavBar = () => {
   let cartProp = 3;
@@ -30,23 +31,22 @@ const NavBar = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography
+        <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
               textDecoration: 'none',
+              textTransform: 'uppercase'
             }}
           >
-            LOGO
+            <NavLink to='/' style={{textDecoration: 'none', color: 'white'}}>hola</NavLink>
           </Typography>
+          
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -78,8 +78,10 @@ const NavBar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">
+                    <NavLink to={page.link} style={{textDecoration:'none', color:'grey'}}>{page.name}</NavLink>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -87,8 +89,6 @@ const NavBar = () => {
           <Typography
             variant="h5"
             noWrap
-            component="a"
-            href=""
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -96,20 +96,22 @@ const NavBar = () => {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
               textDecoration: 'none',
             }}
-          >
-            LOGO
+          > 
+            <NavLink to='/' style={{textDecoration:'none', color:'white'}}>Hola</NavLink>
           </Typography>
+  
+          
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                key={page.name}
+                
+                sx={{ my: 2, display: 'block' }}
               >
-                {page}
+                <NavLink style={{color: 'white', textDecoration:'none'}} to={page.link}>{page.name}</NavLink>
+                
               </Button>
             ))}
           </Box>

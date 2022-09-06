@@ -1,22 +1,26 @@
-import ItemCountContainer from "./components/ItemCountContainer";
-import ItemListContainer from "./components/itemList/ItemListContainer";
-import NavBar from "./components/NavBar";
-// import FetchArrayContainer from "./testComponents/FetchArrayContainer";
-// import FetchContainer from "./testComponents/FetchContainer";
-// import Promesas from "./testComponents/Promesas";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Footer from "./components/Footer";
+import NavBar from './components/NavBar';
+import ItemListContainer from "./components/itemList/ItemListContainer"
+import ItemDetailContainer from "./components/itemList/item/ItemDetailContainer";
 
 function App() {
-  // const greetings = 'Hola buenas dias, buenas tardes, buenas noches';
   
   return (
-    <>
+   <>
+   <BrowserRouter>
+   {/* afuera de las rutas se muestran los componentes que van a estar siempre presentes en la pagina */}
     <NavBar/>
-    <ItemCountContainer/>
-    <ItemListContainer/>
-    {/* <FetchContainer/> */}
-    {/* <FetchArrayContainer/> */}
-    {/* <Promesas/> */}
-    </>
+    
+    <Routes>
+      <Route path='/' element={ <ItemListContainer/> } />
+      <Route path='/category/:category' element={ <ItemListContainer/> } />
+      <Route path='/product/:id' element={ <ItemDetailContainer/> } />
+    </Routes>
+
+    <Footer/>
+   </BrowserRouter>
+   </>
   );
 }
 
