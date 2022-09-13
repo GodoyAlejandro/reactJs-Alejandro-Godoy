@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import CardActions from '@mui/material/CardActions';
 
-const ItemCount = ({contador, stock, setContador}) => {
+const ItemCount = ({contador, stock, setContador, enableCount, setEnableCount}) => {
   const sumar = () =>{
     if(contador<stock){
       setContador(contador+1)
@@ -16,6 +16,9 @@ const ItemCount = ({contador, stock, setContador}) => {
     if(contador>1){
       setContador(contador-1)
     }
+  }
+  const addToCart = () =>{
+    setEnableCount(true)
   }
   return (
     <div>
@@ -30,7 +33,7 @@ const ItemCount = ({contador, stock, setContador}) => {
         <RemoveIcon/>
       </Fab>
       <CardActions>
-        <Button variant='contained'>add to cart</Button>
+        <Button variant='contained' onClick={()=>{addToCart()}}>add to cart</Button>
       </CardActions>
     </div>
   )

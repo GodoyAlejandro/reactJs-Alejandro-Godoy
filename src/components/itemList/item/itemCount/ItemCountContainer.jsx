@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ItemCount from './ItemCount';
 
-const ItemCountContainer = ({initialCount, stock}) => {
-    const [contador, setContador] = useState(initialCount);
+const ItemCountContainer = ({stock, contador, setContador, enableCount, setEnableCount}) => {
    
-  return <ItemCount stock={stock} contador={contador} setContador={setContador}/>
+  return <ItemCount stock={stock} contador={contador} setContador={setContador} enableCount={enableCount} setEnableCount={setEnableCount}/>
 }
 
 export default ItemCountContainer

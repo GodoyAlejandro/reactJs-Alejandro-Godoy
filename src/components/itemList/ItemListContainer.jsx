@@ -28,9 +28,7 @@ const ItemListContainer = () => {
           
       },[genre])
   return (
-    <div className='itemListContainer'>{load ? <Loading/> : <ItemList products={products}/> }
-      {/* <ItemList products={products} /> */}
-    </div>
+    <div className='itemListContainer'>{load ? <Loading/> : <ItemList products={products}/>}</div>
   )
 }
 
