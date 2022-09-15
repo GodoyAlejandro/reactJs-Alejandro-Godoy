@@ -7,19 +7,22 @@ import { Button } from "@mui/material";
 
 export default function Footer() {
   return (
-    <Paper sx={{marginTop: '.5rem', bottom: 0, postion:'fixed'}} component="footer" square variant="outlined">
+    <Paper
+      sx={{ marginTop: ".5rem", bottom: 0, postion: "fixed" }}
+      component="footer"
+      square
+      variant="outlined"
+    >
       <Container maxWidth="lg">
         <Box
           sx={{
             flexGrow: 1,
             justifyContent: "center",
             display: "flex",
-            my:1
+            my: 1,
           }}
         >
-          <Button >
-            Footer
-          </Button>
+          <Button>Footer</Button>
         </Box>
 
         <Box
