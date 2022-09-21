@@ -19,7 +19,6 @@ const pages = [
 ];
 
 const NavBar = () => {
-  let cartProp = 3;
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -127,7 +126,9 @@ const NavBar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <CartWidget cartProp={cartProp} />
+            <NavLink to="/cart" style={{ textDecoration: "none", color: "white" }}>
+              <CartWidget />
+            </NavLink>
           </Box>
         </Toolbar>
       </Container>

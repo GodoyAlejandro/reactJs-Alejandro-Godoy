@@ -7,7 +7,7 @@ function GoToCart() {
     <div>
       <p>este articulo esta en el carrito</p>
       <Button variant="contained">
-        <Link to="/Cart" style={{ color: "white", textDecoration: "none" }}>
+        <Link to="/cart" style={{ color: "white", textDecoration: "none" }}>
           go to cart
         </Link>
       </Button>
