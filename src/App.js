@@ -18,7 +18,7 @@ function App() {
           <NavBar />
 
           <Routes>
-            <Route path="/test" element={<FirebaseTest />} />
+            {/* <Route path="/test" element={<FirebaseTest />} /> */}
             <Route path="/" element={<ItemListContainer />} />
             <Route path="/genre/:genre" element={<ItemListContainer />} />
             <Route path="/product/:id" element={<ItemDetailContainer />} />
