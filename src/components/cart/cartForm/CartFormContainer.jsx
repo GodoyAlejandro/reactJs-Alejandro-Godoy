@@ -61,7 +61,7 @@ const CartFormContainer = () => {
           onChange={(e) => {
             setEmail(e.target.value);
           }}
-          placeholder="set your name"
+          placeholder="set your email"
         />
         <Button type="submit">send</Button>
       </form>
