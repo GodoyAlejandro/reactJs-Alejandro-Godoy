@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Loading from "../../Loading";
 import ItemDetail from "./ItemDetail";
 import "./ItemDetail.css";
+
 function ItemDetailContainer() {
   const [product, setProduct] = useState({});
   const { id } = useParams();

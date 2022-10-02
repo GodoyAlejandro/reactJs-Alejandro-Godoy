@@ -7,8 +7,6 @@ import ItemDetailContainer from "./components/itemList/item/ItemDetailContainer"
 import ItemListContainer from "./components/itemList/ItemListContainer";
 import NavBar from "./components/NavBar";
 
-// export const cartContext = createContext();
-
 function App() {
   return (
     <>

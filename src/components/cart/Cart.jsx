@@ -2,10 +2,12 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Button, CardActions, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Cart({ clear, removeItem, total, cartItem }) {
+  useEffect(()=>{
+  },[])
   return (
     <Box sx={{ display: "flex", justifyContent: "center", margin: "1rem" }}>
       <Paper elevation={3} sx={{ width: "50rem" }}>
