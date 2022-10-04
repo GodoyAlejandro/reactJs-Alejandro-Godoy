@@ -1,18 +1,46 @@
-import { Button } from "@mui/material";
-import React, { useContext, useState } from "react";
-import { CartContext } from "../../../cartContext/CartContext";
-import { DateTime } from "luxon";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { useFormik } from "formik";
+import { DateTime } from "luxon";
+import React, { useContext, useState } from "react";
+import * as Yup from "yup";
+import { CartContext } from "../../../cartContext/CartContext";
+import Loading from "../../Loading";
+import Form from "./Form/Form";
+import Ticket from "./Ticket/Ticket";
 
 const CartFormContainer = () => {
+  const [confirmBuy, setConfirmBuy] = useState(false);
+  const [ticketView, setTicketView] = useState({});
   const { cartItem, total } = useContext(CartContext);
-  const [name, setName] = useState("");
-  const [tel, setTel] = useState("");
-  const [email, setEmail] = useState("");
-  const [buy, setBuy] = useState("");
 
-  const submit = (e) => {
-    e.preventDefault();
+  const yupSchema = Yup.object().shape({
+    name: Yup.string()
+      .min(3, "the name is too short")
+      .max(
+        747,
+        "Hubert Blaine Wolfeschlegelsteinhausenbergerdorff Sr. is that you?"
+      )
+      .required("please enter your name"),
+    tel: Yup.string()
+      .min(10, "the phone number you entered is too short")
+      .required("please enter your phone number")
+      .matches(
+        /^(?:(?:00)?549?)?0?(?:11|15|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/,
+        "invalid phone number"
+      ),
+    email: Yup.string()
+      .email("put a correct email")
+      .required("please put your contact email"),
+  });
+
+  const uploadToFirestore = (ticket) => {
+    const db = getFirestore();
+    const ordersCollectionRef = collection(db, "orders");
+    addDoc(ordersCollectionRef, ticket).then(({ id }) =>
+      setTicketView({ ...ticket, id: id })
+    );
+  };
+  const createTicket = (values) => {
     const dt = DateTime.now().toLocaleString(DateTime.DATETIME_MED);
     const items = cartItem.map((i) => {
       return {
@@ -23,50 +51,31 @@ const CartFormContainer = () => {
       };
     });
     let ticket = {
-      buyer: { name: name, tel: tel, email: email },
+      buyer: values,
       items: items,
       date: dt,
       total: total,
     };
-    console.log(ticket);
-    const db = getFirestore();
-    const ordersCollectionRef = collection(db, "orders");
-    addDoc(ordersCollectionRef, ticket).then(({ id }) =>
-      setBuy(id)
-    );
+    uploadToFirestore(ticket);
   };
+ 
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      tel: "",
+      email: "",
+    },
+    validationSchema: yupSchema,
+    onSubmit: (values) => {
+      createTicket(values);
+      setConfirmBuy(true);
+    },
+  });
 
   return (
-    <div>
-      <form onSubmit={submit}>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-          placeholder="set your name"
-        />
-        <input
-          type="number"
-          value={tel}
-          onChange={(e) => {
-            setTel(e.target.value);
-          }}
-          placeholder="set your phone number"
-        />
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          placeholder="set your email"
-        />
-        <Button type="submit">send</Button>
-      </form>
-      {buy.length === 0 ? <p></p> : <p>id de compra: {buy}</p>}
-    </div>
+    <>
+      {!confirmBuy ? <Form formik={formik}/> : Object.keys(ticketView).length === 0 ? <Loading/> : <Ticket ticketView={ticketView} />}
+    </>
   );
 };
 
