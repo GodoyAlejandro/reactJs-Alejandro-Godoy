@@ -11,7 +11,7 @@ import Ticket from "./Ticket/Ticket";
 const CartFormContainer = () => {
   const [confirmBuy, setConfirmBuy] = useState(false);
   const [ticketView, setTicketView] = useState({});
-  const { cartItem, total } = useContext(CartContext);
+  const { cartItem, total, setCartItem } = useContext(CartContext);
 
   const yupSchema = Yup.object().shape({
     name: Yup.string()
@@ -69,6 +69,8 @@ const CartFormContainer = () => {
     onSubmit: (values) => {
       createTicket(values);
       setConfirmBuy(true);
+      setCartItem([])
+      // localStorage.setItem('cart', JSON.stringify([]))
     },
   });
 

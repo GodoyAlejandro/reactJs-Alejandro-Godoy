@@ -16,8 +16,8 @@ const Form = ({ formik }) => {
     values,
   } = formik;
   return (
-    <form onSubmit={handleSubmit}>
-      <Grid container sx={{ margin: "1rem" }}>
+    <form onSubmit={handleSubmit} style={{height:'100vh'}}>
+      <Grid container sx={{ padding: "1rem", display:'flex', justifyContent:'center' }}>
         <Stack spacing={1.5}>
           <Grid item>
             <TextField

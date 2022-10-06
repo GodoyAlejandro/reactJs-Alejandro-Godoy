@@ -14,34 +14,36 @@ export const CartProvider = ({ children }) => {
     if (isInCart) {
       const carritoActualizado = cartItem.map((prod) => {
         if (prod.id === item.id) {
-          return { ...prod, quantity: prod.quantity + item.quantity };
+          return (prod.quantity + item.quantity) >= item.stock
+            ? { ...prod, quantity: item.stock }
+            : { ...prod, quantity: prod.quantity + item.quantity };
         } else {
           return prod;
         }
       });
       setCartItem(carritoActualizado);
-      localStorage.setItem("cart", JSON.stringify(carritoActualizado));
     } else {
       setCartItem([...cartItem, item]);
     }
   };
   const removeItem = (id) => {
     setCartItem(cartItem.filter((rItem) => rItem.id !== id));
-    cartItem.length === 0
-      ? localStorage.removeItem("cart")
-      : localStorage.setItem(
-          "cart",
-          JSON.stringify(cartItem.filter((rItem) => rItem.id !== id))
-        );
   };
   const clear = () => {
     setCartItem([]);
-    localStorage.removeItem("cart");
   };
 
   return (
     <CartContext.Provider
-      value={{ cartItem, addItem, removeItem, clear, total, setTotal }}
+      value={{
+        cartItem,
+        addItem,
+        removeItem,
+        clear,
+        total,
+        setTotal,
+        setCartItem,
+      }}
     >
       {children}
     </CartContext.Provider>
