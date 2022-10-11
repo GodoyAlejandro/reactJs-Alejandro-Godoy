@@ -11,11 +11,10 @@ import Ticket from "./Ticket/Ticket";
 const CartFormContainer = () => {
   const [confirmBuy, setConfirmBuy] = useState(false);
   const [ticketView, setTicketView] = useState({});
-  const { cartItem, total, setCartItem, setTotal } = useContext(CartContext);
+  const { cartItem, total, setCartItem, handleSetTotal } = useContext(CartContext);
 
   useEffect(()=>{
-    setTotal(cartItem.reduce((acc, tp) => (acc += tp.quantity * tp.price), 0));
-
+    handleSetTotal()
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 

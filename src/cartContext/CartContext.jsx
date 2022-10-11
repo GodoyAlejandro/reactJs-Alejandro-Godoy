@@ -10,7 +10,11 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItem));
   }, [cartItem]);
-  
+
+  const handleSetTotal = () => {
+    setTotal(cartItem.reduce((acc, tp) => (acc += tp.quantity * tp.price), 0));
+  };
+
   const addItem = (item) => {
     const isInCart = cartItem.find((prod) => prod.id === item.id);
     if (isInCart) {
@@ -43,7 +47,7 @@ export const CartProvider = ({ children }) => {
         removeItem,
         clear,
         total,
-        setTotal,
+        handleSetTotal,
         setCartItem,
       }}
     >

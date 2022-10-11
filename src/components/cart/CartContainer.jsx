@@ -6,12 +6,11 @@ import CartEmpty from "./CartEmpty";
 import { Container } from "@mui/material";
 
 function CartContainer() {
-  const { cartItem, clear, removeItem, total, setTotal } =
+  const { cartItem, clear, removeItem, total, handleSetTotal } =
     useContext(CartContext);
 
   useEffect(() => {
-    setTotal(cartItem.reduce((acc, tp) => (acc += tp.quantity * tp.price), 0));
-
+    handleSetTotal();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cartItem]);
   return (
