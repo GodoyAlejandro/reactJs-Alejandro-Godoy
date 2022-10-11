@@ -14,7 +14,7 @@ function CartContainer() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cartItem]);
   return (
-    <Container sx={{ height: "100vh" }}>
+    <Container sx={{height:'auto'}}>
       {cartItem.length === 0 ? (
         <CartEmpty />
       ) : (
