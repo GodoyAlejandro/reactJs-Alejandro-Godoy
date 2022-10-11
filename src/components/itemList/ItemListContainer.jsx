@@ -18,24 +18,12 @@ const ItemListContainer = () => {
   useEffect(() => {
     const db = getFirestore();
 
-    if (genre) {
-      const prodsFilterRef = query(
-        collection(db, "products"),
-        where("genre", "==", genre)
-      );
-      getDocs(prodsFilterRef).then((snapshot) => {
-        setProducts(
-          snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-        );
-      });
-    } else {
-      const productCollectionRef = collection(db, "products");
-      getDocs(productCollectionRef).then((snapshot) => {
-        setProducts(
-          snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-        );
-      });
-    }
+    const prodsFilterRef = genre
+      ? query(collection(db, "products"), where("genre", "==", genre))
+      : collection(db, "products");
+    getDocs(prodsFilterRef).then((snapshot) => {
+      setProducts(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    });
   }, [genre]);
   return (
     <div className="itemListContainer">

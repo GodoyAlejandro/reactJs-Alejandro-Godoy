@@ -2,6 +2,8 @@ import {
   Button,
   CardActions,
   CardContent,
+  Chip,
+  Container,
   Divider,
   Grid,
   Paper,
@@ -16,7 +18,7 @@ const Ticket = ({ ticketView }) => {
   const { name, tel, email } = buyer;
 
   return (
-    <div style={{ height: "100vh" }}>
+    <Container sx={{ height: "100vh" }}>
       <Box
         sx={{
           margin: "1rem",
@@ -33,7 +35,7 @@ const Ticket = ({ ticketView }) => {
             Ticket
           </Typography>
           <Divider variant="middle" textAlign="left">
-            {date}
+            <Chip label={date}/>
           </Divider>
           <CardContent>
             <Grid
@@ -48,7 +50,7 @@ const Ticket = ({ ticketView }) => {
             </Grid>
           </CardContent>
           <Divider variant="middle" textAlign="left">
-            Items
+          <Chip label='items' />
           </Divider>
           <CardContent>
             <Grid
@@ -70,17 +72,17 @@ const Ticket = ({ ticketView }) => {
           <CardContent>
             <Typography>Total: ${total}</Typography>
           </CardContent>
-          <Divider variant='middle'/>
-          <CardActions sx={{display:'flex', justifyContent:'center'}}>
+          <Divider variant="middle" />
+          <CardActions sx={{ display: "flex", justifyContent: "center" }}>
             <Button variant="contained">
-              <Link to='/' style={{textDecoration:'none', color:'white'}}>
+              <Link to="/" style={{ textDecoration: "none", color: "white" }}>
                 Home
               </Link>
             </Button>
           </CardActions>
         </Paper>
       </Box>
-    </div>
+    </Container>
   );
 };
 

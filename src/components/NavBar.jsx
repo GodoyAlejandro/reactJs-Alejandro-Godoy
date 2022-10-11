@@ -6,20 +6,19 @@ import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { ThemeProvider } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { NavLink } from "react-router-dom";
-import CartWidget from "./CartWidget";
 import { MuiTheme } from "../MuiThemeContext/MuiTheme";
-import { ThemeProvider } from "@mui/material/styles";
+import CartWidget from "./CartWidget";
 
 const pages = [
   { link: "/genre/action", name: "action" },
   { link: "/genre/comedy", name: "comedy" },
   { link: "/genre/horror", name: "horror" },
 ];
-
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -33,8 +32,8 @@ const NavBar = () => {
   };
 
   return (
-    <ThemeProvider theme={MuiTheme} >
-      <AppBar position="static" >
+    <ThemeProvider theme={MuiTheme}>
+      <AppBar position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
@@ -50,11 +49,18 @@ const NavBar = () => {
                 textTransform: "uppercase",
               }}
             >
-              <NavLink to="/" style={{ textDecoration: "none", color: "white" }}>
-                Logo
+              <NavLink
+                to="/"
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <img
+                  src="https://i.postimg.cc/fbHsSmdq/blockbuster-1.png"
+                  alt="blockbuster logo"
+                  style={{ width: "4.5rem" }}
+                />
               </NavLink>
             </Typography>
-      
+
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
               <IconButton
                 size="large"
@@ -111,11 +117,18 @@ const NavBar = () => {
                 textDecoration: "none",
               }}
             >
-              <NavLink to="/" style={{ textDecoration: "none", color: "white" }}>
-                Logo
+              <NavLink
+                to="/"
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <img
+                  src="https://i.postimg.cc/fbHsSmdq/blockbuster-1.png"
+                  alt="blockbuster logo"
+                  style={{ width: "4.5rem" }}
+                />
               </NavLink>
             </Typography>
-      
+
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
                 <Button key={page.name} sx={{ my: 2, display: "block" }}>
@@ -128,7 +141,7 @@ const NavBar = () => {
                 </Button>
               ))}
             </Box>
-      
+
             <Box sx={{ flexGrow: 0 }}>
               <NavLink
                 to="/cart"
@@ -140,7 +153,7 @@ const NavBar = () => {
           </Toolbar>
         </Container>
       </AppBar>
-    </ThemeProvider >
+    </ThemeProvider>
   );
 };
 export default NavBar;

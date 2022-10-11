@@ -1,10 +1,9 @@
-import React from "react";
-import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import CardActions from "@mui/material/CardActions";
+import Typography from "@mui/material/Typography";
+import React from "react";
 
 const ItemCount = ({ contador, stock, setContador, addToCart }) => {
   const sumar = () => {
@@ -20,23 +19,35 @@ const ItemCount = ({ contador, stock, setContador, addToCart }) => {
 
   return (
     <div>
-      <Typography variant="h6">stock disponible: {stock}</Typography>
-      <Fab color="primary" aria-label="add" onClick={() => sumar()}>
-        <AddIcon />
-      </Fab>
-      <Typography variant="p" sx={{ margin: "1rem" }}>
-        {contador}
-      </Typography>
-      <Fab
-        color="secondary"
-        aria-label="add"
-        onClick={() => {
-          restar();
-        }}
-      >
-        <RemoveIcon />
-      </Fab>
-      <CardActions>
+      <CardActions sx={{ display: "flex", justifyContent: "center" }}>
+        <Button
+          onClick={() => sumar()}
+          variant="contained"
+          sx={{ color: "white" }}
+        >
+          <AddIcon />
+        </Button>
+        <Typography
+          variant="p"
+          sx={{
+            width: "2rem",
+            margin: ".5rem",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          {contador}
+        </Typography>
+        <Button
+          variant="contained"
+          onClick={() => {
+            restar();
+          }}
+        >
+          <RemoveIcon />
+        </Button>
+      </CardActions>
+      <CardActions sx={{ display: "flex", justifyContent: "center" }}>
         <Button
           variant="contained"
           onClick={() => {
@@ -46,6 +57,7 @@ const ItemCount = ({ contador, stock, setContador, addToCart }) => {
           add to cart
         </Button>
       </CardActions>
+      <Typography variant="caption text">*stock disponible: {stock}</Typography>
     </div>
   );
 };
