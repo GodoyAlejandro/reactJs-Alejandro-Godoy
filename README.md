@@ -2,7 +2,7 @@
 
 Este proyecto esta pensado para ser un ecommerce de venta de peliculas al estilo de BlockBuster.
 
-![Gif funcionamiento](./readme%20img/2022-09-06%2021-21-11.gif)
+[![Gif funcionamiento](https://iili.io/Z9TTw7.md.gif)](https://freeimage.host/i/Z9TTw7)
 
 ## Funcionamiento y librerias
 
